@@ -11,6 +11,7 @@
   <h1>GravityBox Interactive</h1>
   <div>
     <button onclick="show('home')">Home</button>
+    <button onclick="show('games')">Games</button>
     <button onclick="show('forum')">Forums</button>
     <button onclick="show('auth')">Login</button>
     <button onclick="logout()">Logout</button>
@@ -22,6 +23,22 @@
   <div class="card">
     <h2>GravityBox Interactive</h2>
     <p>Sandbox games • Physics systems • Experimental gameplay</p>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section id="games" class="page hidden">
+  <div class="card">
+    <h2>Games</h2>
+    <p>Play projects created inside GravityBox.</p>
+  </div>
+
+  <div class="card">
+    <h3>🎮 Untitled Sandbox Game</h3>
+    <p>
+      A physics-based sandbox experiment focused on movement, objects, and interaction systems.
+    </p>
+    <button onclick="openGame()">Play</button>
   </div>
 </section>
 
@@ -58,7 +75,9 @@
     <button onclick="clearPosts()">Clear Posts</button>
   </div>
 </section>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
+
 </body>
 </html>
