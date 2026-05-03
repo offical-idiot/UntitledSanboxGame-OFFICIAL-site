@@ -7,12 +7,16 @@ const supabase = window.supabaseClient;
 let currentUser = null;
 let role = "guest";
 
-// ---------- NAV ----------
+// ---------- PAGE SYSTEM ----------
 function show(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
-  document.getElementById(page).classList.remove("hidden");
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.add("hidden");
+  });
 
-  if (page === "forum") loadPosts();
+  const target = document.getElementById(page);
+  if (target) {
+    target.classList.remove("hidden");
+  }
 }
 
 // ---------- SIGN UP ----------
