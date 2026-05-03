@@ -1,87 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  background: radial-gradient(circle at top, #1e1e1e, #0f0f0f);
+  background: linear-gradient(180deg, #0f0f0f, #1b1b1b);
   color: #f4f4f4;
+  min-height: 100vh;
 }
 
 /* HEADER */
 header {
-  background: linear-gradient(90deg, #222, #333);
-  padding: 30px 20px;
   text-align: center;
-  border-bottom: 2px solid #00a86b;
+  padding: 40px 20px;
+  background: #111;
+  border-bottom: 2px solid #00c97f;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2rem;
+  font-size: 2.4rem;
+  margin-bottom: 10px;
 }
 
 header p {
-  margin-top: 8px;
-  color: #bbb;
+  color: #bdbdbd;
+  font-size: 1rem;
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 main {
-  padding: 20px;
   max-width: 900px;
   margin: auto;
+  padding: 25px;
 }
 
 /* SECTIONS */
 section {
-  margin-bottom: 25px;
-  background: #252525;
+  background: #1f1f1f;
+  margin-bottom: 20px;
   padding: 18px;
-  border-radius: 10px;
-  border: 1px solid #333;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: transform 0.15s ease, background 0.15s ease;
+  border-radius: 12px;
+  border: 1px solid #2e2e2e;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.15s ease, background 0.2s ease;
 }
 
 section:hover {
-  transform: translateY(-2px);
-  background: #2c2c2c;
+  transform: translateY(-3px);
+  background: #242424;
 }
 
-/* BUTTONS */
+/* HEADINGS */
+h2 {
+  margin-bottom: 10px;
+  color: #00c97f;
+}
+
+h3 {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  color: #ddd;
+}
+
+/* LISTS */
+ul, ol {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* BUTTON */
 button {
+  margin-top: 10px;
   padding: 10px 16px;
-  background: linear-gradient(90deg, #00a86b, #00c97f);
-  color: white;
+  background: #00c97f;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 8px;
+  color: #000;
   font-weight: bold;
+  cursor: pointer;
   transition: transform 0.1s ease, filter 0.2s ease;
 }
 
 button:hover {
   filter: brightness(1.1);
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 button:active {
   transform: scale(0.97);
 }
 
-/* CODE TAGS */
+/* CODE STYLE */
 code {
-  background: #111;
-  padding: 3px 6px;
-  border-radius: 4px;
+  background: #000;
   color: #00ff9c;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 0.95em;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 15px;
-  background-color: #111;
-  color: #777;
-  font-size: 0.9em;
-  border-top: 1px solid #222;
+  padding: 20px;
   margin-top: 30px;
+  background: #111;
+  border-top: 1px solid #222;
+  color: #777;
+  font-size: 0.85rem;
 }
