@@ -1,66 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Untitled Sandbox Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <title>GravityBox Interactive</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header>
-    <h1>Untitled Sandbox Game</h1>
-    <p>A physics-based sandbox experience | Made with Godot</p>
-  </header>
 
-  <main>
-    <section class="game-info">
-      <h2>Download</h2>
-      <p><strong>Windows:</strong> <code>Coming Soon</code></p>
-      <p><strong>Web Version:</strong> <code>Coming Soon</code></p>
-      <button onclick="downloadGame()">Download Game</button>
-    </section>
+<nav>
+  <h1>GravityBox Interactive</h1>
+  <div>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('forums')">Forums</button>
+    <button onclick="show('auth')">Login</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+</nav>
 
-    <section>
-      <h2>How to Play</h2>
-      <ol>
-        <li>Download the game or launch the web version</li>
-        <li>Open the game</li>
-        <li>Spawn objects and experiment with physics</li>
-        <li>Build, destroy, and explore freely</li>
-      </ol>
-    </section>
+<!-- HOME -->
+<section id="home" class="page">
+  <div class="card">
+    <h2>Welcome to GravityBox Interactive</h2>
+    <p>Indie sandbox games • Physics systems • Experimental gameplay</p>
+  </div>
 
-    <section>
-      <h2>Controls</h2>
-      <ul>
-        <li><strong>WASD</strong> - Move</li>
-        <li><strong>Mouse</strong> - Look around</li>
-        <li><strong>Left Click</strong> - Interact / Spawn</li>
-        <li><strong>Right Click</strong> - Alternate action</li>
-        <li><strong>ESC</strong> - Pause Menu</li>
-      </ul>
-    </section>
+  <div class="card">
+    <h3>Featured Game</h3>
+    <p><b>Untitled Sandbox Game</b> — Build, destroy, and experiment with physics freely.</p>
+  </div>
+</section>
 
-    <section>
-      <h2>About the Game</h2>
-      <p>
-        <strong>Untitled Sandbox Game</strong> is an open-ended sandbox where you can
-        experiment with physics, build structures, and create your own chaos.
-        There are no rules—just tools and your imagination.
-      </p>
-    </section>
-  </main>
+<!-- AUTH -->
+<section id="auth" class="page hidden">
+  <div class="card">
+    <h2>Login</h2>
+    <input id="loginUser" placeholder="Username">
+    <input id="loginPass" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
 
-  <footer>
-    <p>© 2026 Untitled Sandbox Game. Not affiliated with any company.</p>
-  </footer>
+    <hr>
 
-  <script>
-    function downloadGame() {
-      alert("Download coming soon!");
-      // later you can replace with:
-      // window.location.href = "your-download-link.zip";
-    }
-  </script>
+    <h2>Sign Up</h2>
+    <input id="suUser" placeholder="Username">
+    <input id="suPass" type="password" placeholder="Password">
+    <button onclick="signup()">Create Account</button>
+  </div>
+</section>
+
+<!-- FORUMS -->
+<section id="forums" class="page hidden">
+  <div class="card">
+    <h2>Forums</h2>
+
+    <textarea id="postText" placeholder="Write a post..."></textarea>
+    <button onclick="postMessage()">Post</button>
+
+    <div id="posts"></div>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="admin" class="page hidden">
+  <div class="card">
+    <h2>Admin Panel</h2>
+    <p>Welcome, GravityBox 👑</p>
+
+    <button onclick="clearPosts()">Clear All Posts</button>
+  </div>
+</section>
+
+<script src="app.js"></script>
 </body>
 </html>
