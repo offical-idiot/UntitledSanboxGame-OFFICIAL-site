@@ -21,62 +21,45 @@ function show(page) {
 
 // ---------- SIGN UP ----------
 async function signup() {
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password
   });
 
-  alert("Account created!");
+  if (error) console.log(error.message);
 }
-
 // ---------- LOGIN ----------
 async function login() {
-  let email = document.getElementById("email").value;
-  let password = document.getElementById("password").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password
   });
 
-  currentUser = data.user;
-
-  // 👑 ADMIN CHECK
-  if (email === "gravitybox@admin.com") {
-    role = "admin";
-    show("admin");
-  } else {
-    role = "user";
-    show("home");
-  }
+  if (error) console.log(error.message);
 }
 
 // ---------- LOGOUT ----------
 async function logout() {
-  await supabase.auth.signOut();
-  currentUser = null;
-  role = "guest";
-  show("home");
+  const { error } = await supabase.auth.signOut();
+  if (error) console.log(error.message);
 }
 
 // ---------- POST ----------
 async function post() {
-  let text = document.getElementById("postText").value;
+  const text = document.getElementById("postText").value;
 
-  await supabase.from("posts").insert([
-    {
-      user: currentUser.email,
-      text: text,
-      role: role
-    }
-  ]);
+  const { data, error } = await supabase
+    .from("posts")
+    .insert([{ text }]);
 
-  loadPosts();
+  if (error) console.log(error.message);
 }
-
 // ---------- LOAD POSTS ----------
 async function loadPosts() {
   const { data } = await supabase.from("posts").select("*");
