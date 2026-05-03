@@ -1,27 +1,20 @@
+// ---------- SUPABASE ----------
 window.supabaseClient = window.supabaseClient || window.supabase.createClient(
   "https://pvjdwtgsulrmxamxrwrx.supabase.co",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2amR3dGdzdWxybXhhbXhyd3J4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUxMzUsImV4cCI6MjA5MzQxMTEzNX0.2V9YYb8Imqvx8bGJT2pVNwUJnwE_BYYxINf-pcRbCQA"
+  "YOUR_ANON_KEY"
 );
 
-const supabase = window.supabaseClient;
+window.onload = () => show("home");
 let currentUser = null;
 let role = "guest";
 
-window.onload = () => {
-  show("home");
-};
-
 // ---------- PAGE SYSTEM ----------
 function show(page) {
-  document.querySelectorAll(".page").forEach(p => {
-    p.classList.add("hidden");
-  });
-
-  const target = document.getElementById(page);
-  if (target) {
-    target.classList.remove("hidden");
-  }
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
+  document.getElementById(page).classList.remove("hidden");
 }
+
+window.onload = () => show("home");
 
 // ---------- SIGN UP ----------
 async function signup() {
