@@ -10,11 +10,15 @@ let role = "guest";
 
 // ---------- PAGE SYSTEM ----------
 function show(page) {
-  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
-  document.getElementById(page).classList.remove("hidden");
-}
+  document.querySelectorAll(".page").forEach(p => {
+    p.style.display = "none";
+  });
 
-window.onload = () => show("home");
+  const target = document.getElementById(page);
+  if (target) {
+    target.style.display = "block";
+  }
+}
 
 // ---------- SIGN UP ----------
 async function signup() {
