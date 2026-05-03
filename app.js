@@ -1,6 +1,6 @@
-// ---------- SUPABASE ----------
+// ---------- window.supabase ----------
 
-window.supabaseClient = window.supabase.createClient("https://pvjdwtgsulrmxamxrwrx.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2amR3dGdzdWxybXhhbXhyd3J4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUxMzUsImV4cCI6MjA5MzQxMTEzNX0.2V9YYb8Imqvx8bGJT2pVNwUJnwE_BYYxINf-pcRbCQA")
+window.window.supabaseClient = window.window.supabase.createClient("https://pvjdwtgsulrmxamxrwrx.window.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB2amR3dGdzdWxybXhhbXhyd3J4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUxMzUsImV4cCI6MjA5MzQxMTEzNX0.2V9YYb8Imqvx8bGJT2pVNwUJnwE_BYYxINf-pcRbCQA")
 window.onload = () => show("home");
 let currentUser = null;
 let role = "guest";
@@ -22,7 +22,7 @@ async function signup() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { data, error } = await supabase.auth.signUp({
+  const { data, error } = await window.supabaseClient.auth.signUp({
     email,
     password
   });
@@ -34,7 +34,7 @@ async function login() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await window.supabaseClient.auth.signInWithPassword({
     email,
     password
   });
@@ -44,7 +44,7 @@ async function login() {
 
 // ---------- LOGOUT ----------
 async function logout() {
-  const { error } = await supabase.auth.signOut();
+  const { error } = await window.supabaseClient.auth.signOut();
   if (error) console.log(error.message);
 }
 
@@ -52,7 +52,7 @@ async function logout() {
 async function post() {
   const text = document.getElementById("postText").value;
 
-  const { data, error } = await supabase
+  const { data, error } = await window.supabaseClient
     .from("posts")
     .insert([{ text }]);
 
@@ -60,7 +60,7 @@ async function post() {
 }
 // ---------- LOAD POSTS ----------
 async function loadPosts() {
-  const { data } = await supabase.from("posts").select("*");
+  const { data } = await window.supabaseClient.from("posts").select("*");
 
   let div = document.getElementById("posts");
   div.innerHTML = "";
@@ -74,6 +74,6 @@ async function loadPosts() {
 
 // ---------- ADMIN ----------
 async function clearPosts() {
-  await supabase.from("posts").delete().neq("id", 0);
+  await window.supabaseClient.from("posts").delete().neq("id", 0);
   loadPosts();
 }
