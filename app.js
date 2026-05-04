@@ -17,8 +17,10 @@ function show(page) {
 
   if (page === "forum") {
     loadPost();
+  }
   if (page === "games") {
     loadGames();
+  }
   if (page === "profile") {
     loadProfile();
   }
