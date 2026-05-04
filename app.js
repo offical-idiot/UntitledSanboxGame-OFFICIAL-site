@@ -16,7 +16,7 @@ function show(page) {
   document.getElementById(page).classList.remove("hidden");
 
   if (page === "forum") {
-    loadPost();
+    loadPosts();
   }
   if (page === "games") {
     loadGames();
