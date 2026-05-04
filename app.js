@@ -91,13 +91,38 @@ async function post() {
   ]);
   loadPosts();
 }
-
 async function loadPosts() {
-  const { data } = await window.supabaseClient.from("posts").select("*");
+  const { data, error } = await window.supabaseClient
+    .from("posts")
+    .select("*")
+    .order("id", { ascending: false });
 
-  posts.innerHTML = "";
+  if (error) {
+    console.log("Post error:", error.message);
+    return;
+  }
+
+  if (!Array.isArray(data)) return;
+
+  const container = document.getElementById("posts");
+  container.innerHTML = "";
+
   data.forEach(p => {
-    posts.innerHTML += `<div class="card">${p.text}</div>`;
+    const email = p.email;
+
+    // CUSTOM NAME RULE
+    let displayName = email;
+
+    if (email === "monkomonko50@gmail.com") {
+      displayName = "GravityBox Interactive ✔";
+    }
+
+    container.innerHTML += `
+      <div class="card">
+        <b>${displayName}</b>
+        <p>${p.text}</p>
+      </div>
+    `;
   });
 }
 
