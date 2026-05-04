@@ -114,15 +114,28 @@ function getProfile() {
   };
 }
 async function loadProfile() {
-  const { data: userData } = await window.supabaseClient.auth.getUser();
+  const { data: userData } =
+    await window.supabaseClient.auth.getUser();
+
   const user = userData.user;
 
+  if (!user) return;
+
+  // get profile from database (if you made profiles table)
   const { data: profile } = await window.supabaseClient
     .from("profiles")
     .select("*")
     .eq("id", user.id)
     .single();
 
-  document.getElementById("userEmail").textContent =
-    "Hello " + profile.email;
+  document.getElementById("profileName").textContent =
+    profile?.display_name || "No name";
+
+  document.getElementById("profileEmail").textContent =
+    user.email;
+
+  document.getElementById("profileRole").textContent =
+    user.email === "gravitybox@admin.com"
+      ? "Admin 👑"
+      : "User";
 }
