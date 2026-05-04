@@ -45,19 +45,20 @@ async function loadGames() {
     .select("*");
 
   if (error) {
-    console.log("Games error:", error.message);
+    console.log("Supabase error:", error.message);
     return;
   }
 
-  if (!data) {
-    console.log("No games returned");
+  if (!Array.isArray(data)) {
+    console.log("Games returned invalid data:", data);
     return;
   }
 
-  gamesList.innerHTML = "";
+  const container = document.getElementById("gamesList");
+  container.innerHTML = "";
 
   data.forEach(g => {
-    gamesList.innerHTML += `
+    container.innerHTML += `
       <div class="card">
         <h3>${g.title}</h3>
         <p>${g.description}</p>
