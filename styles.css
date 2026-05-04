@@ -2,18 +2,20 @@ body {
   margin: 0;
   font-family: Arial;
   background: #0f1117;
-  color: #fff;
+  color: white;
 }
 
-.navbar {
+nav {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
   background: #1a1d26;
+  padding: 15px;
 }
 
-.nav-links button {
-  margin-left: 10px;
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
 .page {
@@ -24,25 +26,20 @@ body {
   display: none;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
+.hero {
+  background: #1c1f2b;
+  padding: 30px;
+  border-radius: 10px;
 }
 
-.game-card {
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.card {
   background: #1c1f2b;
   padding: 15px;
   border-radius: 10px;
-  cursor: pointer;
-}
-
-.game-card:hover {
-  background: #262a3a;
-}
-
-.game-hero {
-  background: #1c1f2b;
-  padding: 30px;
-  border-radius: 12px;
 }
