@@ -62,6 +62,7 @@ function openGame(title, desc, url) {
 }
 
 function playFeatured() {
+  alert("ALPHA TEST, NOT FINISHED!")
   window.location.href = "games/untitled-sandbox/index.html";
 }
 
