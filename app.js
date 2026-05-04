@@ -21,7 +21,6 @@ function show(page) {
 async function signup() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const displayName = prompt("Choose a display name:");
 
   const { data, error } = await window.supabaseClient.auth.signUp({
     email,
@@ -29,17 +28,7 @@ async function signup() {
   });
 
   if (error) return console.log(error.message);
-
-  const user = data.user;
-
-  await window.supabaseClient.from("profiles").insert([
-    {
-      id: user.id,
-      email: user.email,
-      display_name: displayName
-    }
-  ]);
-}
+  
 // ---------- LOGIN ----------
 async function login() {
   const email = document.getElementById("email").value;
@@ -68,7 +57,7 @@ async function post() {
 
   await window.supabaseClient.from("posts").insert([
     {
-      user: profile.display_name,
+      user: currentUser.email,
       text: text
     }
   ]);
@@ -135,5 +124,5 @@ async function loadProfile() {
     .single();
 
   document.getElementById("userEmail").textContent =
-    "Hello " + profile.display_name;
+    "Hello " + profile.email;
 }
