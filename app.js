@@ -129,7 +129,7 @@ async function loadProfile() {
     .single();
 
   document.getElementById("profileName").textContent =
-    profile?.display_name || "No name";
+    profile?.email || "No Email";
 
   document.getElementById("profileEmail").textContent =
     user.email;
