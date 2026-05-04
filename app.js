@@ -6,17 +6,15 @@ let currentUser = null;
 let role = "guest";
 
 // ---------- PAGE SYSTEM ----------
-function show(page) {
-  document.querySelectorAll(".page").forEach(p => {
-    p.classList.add("hidden");
-  });
-
+show = (page) => {
+  document.querySelectorAll(".page").forEach(p => p.classList.add("hidden"));
   document.getElementById(page).classList.remove("hidden");
 
-  if (page === "profile") {
-    loadProfile();
-  }
+  if (page === "games") loadGames();
+  if (page === "forum") loadPosts();
+  if (page === "profile") loadProfile();
 }
+
 // ---------- SIGN UP ----------
 async function signup() {
   const email = document.getElementById("email").value;
@@ -29,6 +27,7 @@ async function signup() {
 
   if (error) return console.log(error.message);
 }
+
 // ---------- LOGIN ----------
 async function login() {
   const email = document.getElementById("email").value;
