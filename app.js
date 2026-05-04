@@ -28,7 +28,7 @@ async function signup() {
   });
 
   if (error) return console.log(error.message);
-  
+}
 // ---------- LOGIN ----------
 async function login() {
   const email = document.getElementById("email").value;
