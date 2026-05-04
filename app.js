@@ -91,16 +91,22 @@ async function post() {
   const { data: userData } =
     await window.supabaseClient.auth.getUser();
 
-  const email = userData.user.email;
+  const email = userData.user?.email;
 
-  await window.supabaseClient.from("posts").insert([
-    {
-      text: text,
-      email: email
-    }
-  ]);
+  const { error } = await window.supabaseClient
+    .from("posts")
+    .insert([
+      {
+        text: text,
+        email: email
+      }
+    ]);
 
-  loadPosts();
+  if (error) {
+    console.log("Insert error:", error.message);
+  } else {
+    loadPosts();
+  }
 }
 
 async function loadPosts() {
